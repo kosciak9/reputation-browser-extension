@@ -1,12 +1,9 @@
 import React from 'react';
+import browser from 'webextension-polyfill';
 
 export default ({ trustLevel, tweetUser, date }) => {
-  let color;
-  let backgroundColor;
-  if (trustLevel > 0) {
-    backgroundColor = '#FA0000';
-    color = 'white';
-  }
+  let backgroundColor = '#FA0000';
+  let color = 'white';
   if (trustLevel > 30) {
     backgroundColor = '#555655';
     color = 'white';
@@ -16,7 +13,17 @@ export default ({ trustLevel, tweetUser, date }) => {
     color = 'white';
   }
   return (
-    <tr>
+    <tr
+      style={{
+        cursor: 'pointer',
+      }}
+      onClick={() => {
+        const creating = browser.tabs.create({
+          url: 'http://localhost:3000/tweet/1',
+        });
+        creating.then(success => console.log(success)).catch(error => console.error(error));
+      }}
+    >
       <td>
         @{tweetUser} on {date}
       </td>

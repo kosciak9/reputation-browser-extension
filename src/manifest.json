@@ -17,7 +17,7 @@
   "content_scripts": [
     {
       "all_frames": false,
-      "matches": ["http://*/*", "https://*/*"],
+      "matches": ["*://twitter.com/*"],
       "js": ["content.js"],
       "css": ["assets/css/palette.css"]
     }
@@ -27,7 +27,7 @@
     "48": "assets/img/icon-48x48.png",
     "128": "assets/img/icon-128x128.png"
   },
-  "permissions": ["storage"],
+  "permissions": ["storage", "notifications", "activeTab"],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "web_accessible_resources": ["assets/img/*", "assets/css/*"]
 }
